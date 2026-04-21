@@ -294,18 +294,18 @@ input[type=color] { position: absolute; inset: 0; opacity: 0; cursor: pointer; w
     box-shadow:0 8px 32px rgba(0,0,0,0.08);
     text-align:center;
   ">
-    <svg width="160" height="60" viewBox="0 0 160 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Purple rounded square background -->
-  <rect x="20" y="8" width="44" height="44" rx="12" fill="#5B4DCC"/>
+   <svg width="120" height="50" viewBox="0 0 160 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Purple rounded square background — wide enough for full "AdStudio" -->
+  <rect x="10" y="3" width="120" height="44" rx="12" fill="#5B4DCC"/>
   
-  <!-- "Ad" text (outside, muted) -->
-  <text x="24" y="36" font-family="sans-serif" font-size="15" font-weight="600" fill="#A09CC0">Ad</text>
+  <!-- "Ad" text (slightly transparent, peeking out feel) -->
+  <text x="20" y="32" font-family="sans-serif" font-size="16" font-weight="700" fill="white">Ad</text>
   
-  <!-- "Studio" text (on top of rect, white) -->
-  <text x="38" y="36" font-family="sans-serif" font-size="15" font-weight="600" fill="white">Studio</text>
+  <!-- "Studio" text (full white) -->
+  <text x="46" y="32" font-family="sans-serif" font-size="16" font-weight="700" fill="white">Studio</text>
   
   <!-- Sparkle ✦ -->
-  <path d="M118 18 L119.2 24 L125 25.5 L119.2 27 L118 33 L116.8 27 L111 25.5 L116.8 24 Z" fill="#5B4DCC"/>
+  <path d="M113 18 L114.4 25 L120 26.5 L114.4 28 L113 35 L111.6 28 L105 26.5 L111.6 25 Z" fill="white"/>
 </svg>
         <div style="font-size:12px;color:#6b6b62;margin-bottom:1.8rem;">Internal tool · Spinny CRM Team</div>
 
@@ -326,7 +326,7 @@ input[type=color] { position: absolute; inset: 0; opacity: 0; cursor: pointer; w
         onfocus="this.style.borderColor='#2D2440'"
         onblur="this.style.borderColor='#5B4DCC'"
       />
-      <span onclick="togglePw()" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:16px;user-select:none;" title="Show/hide password">👁</span>
+      <span onclick="togglePw()" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:16px;user-select:none;color:#5B4DCC" title="Show/hide password">👁</span>
     </div>
 
     <div id="login-err" style="
@@ -340,7 +340,7 @@ input[type=color] { position: absolute; inset: 0; opacity: 0; cursor: pointer; w
       cursor:pointer;font-family:'DM Sans',sans-serif;
       transition:background .15s;
     "
-    onmouseover="this.style.background='#201c3b'"
+    onmouseover="this.style.background='#2d2661'"
     onmouseout="this.style.background='#5B4DCC'"
     >Unlock →</button>
 
