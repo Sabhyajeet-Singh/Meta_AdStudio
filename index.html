@@ -281,6 +281,106 @@ input[type=color] { position: absolute; inset: 0; opacity: 0; cursor: pointer; w
 </style>
 </head>
 <body>
+
+<div id="login-gate" style="
+  position:fixed;inset:0;z-index:9999;
+  background:#f5f5f0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'DM Sans',sans-serif;
+">
+  <div style="
+    background:#fff;border:1.5px solid #e2e2da;border-radius:16px;
+    padding:2.5rem 2rem;width:100%;max-width:380px;
+    box-shadow:0 8px 32px rgba(0,0,0,0.08);
+    text-align:center;
+  ">
+    <div style="width:44px;height:44px;background:#25D366;border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.849L.057 23.617a.75.75 0 00.91.91l5.82-1.463A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+    </div>
+    <div style="font-size:17px;font-weight:600;letter-spacing:-.3px;margin-bottom:4px;">WA Template Studio</div>
+    <div style="font-size:12px;color:#6b6b62;margin-bottom:1.8rem;">Internal tool · Spinny CRM Team</div>
+
+    <div style="position:relative;margin-bottom:10px;">
+      <input
+        id="login-pw"
+        type="password"
+        placeholder="Enter team password"
+        onkeydown="if(event.key==='Enter')checkLogin()"
+        style="
+          width:100%;padding:11px 42px 11px 14px;
+          border:1.5px solid #e2e2da;border-radius:9px;
+          font-size:14px;font-family:'DM Sans',sans-serif;
+          outline:none;transition:border-color .15s;
+          box-sizing:border-box;
+
+        "
+        onfocus="this.style.borderColor='#25D366'"
+        onblur="this.style.borderColor='#e2e2da'"
+      />
+      <span onclick="togglePw()" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:16px;user-select:none;" title="Show/hide password">👁</span>
+    </div>
+
+    <div id="login-err" style="
+      font-size:12px;color:#dc2626;margin-bottom:10px;
+      min-height:18px;font-weight:500;
+    "></div>
+
+    <button onclick="checkLogin()" style="
+      width:100%;padding:11px;background:#25D366;color:#fff;
+      border:none;border-radius:9px;font-size:14px;font-weight:600;
+      cursor:pointer;font-family:'DM Sans',sans-serif;
+      transition:background .15s;
+    "
+    onmouseover="this.style.background='#128C7E'"
+    onmouseout="this.style.background='#25D366'"
+    >Unlock →</button>
+
+    <div style="font-size:11px;color:#6b6b62;margin-top:1.2rem;">
+      🔒 Access restricted to Spinny CRM team only
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+var CORRECT_HASH = 'd543ef4265158e2090f95473763287bef248939a696c1d692dee3c274d633a9f';
+
+  // Check if already unlocked in this session
+  if(sessionStorage.getItem('wa_studio_auth') === CORRECT_HASH){
+    document.getElementById('login-gate').style.display = 'none';
+  }
+
+  window.checkLogin = async function(){
+    var pw = document.getElementById('login-pw').value;
+    var err = document.getElementById('login-err');
+    if(!pw){ err.textContent = 'Please enter the password.'; return; }
+
+    // Hash the entered password using browser's built-in SubtleCrypto
+    var encoded = new TextEncoder().encode(pw);
+    var hashBuffer = await crypto.subtle.digest('SHA-256', encoded);
+    var hashArray = Array.from(new Uint8Array(hashBuffer));
+    var hashHex = hashArray.map(b => b.toString(16).padStart(2,'0')).join('');
+
+    if(hashHex === CORRECT_HASH){
+      sessionStorage.setItem('wa_studio_auth', CORRECT_HASH);
+      document.getElementById('login-gate').style.display = 'none';
+      err.textContent = '';
+    } else {
+      err.textContent = '❌ Incorrect password. Please try again.';
+      document.getElementById('login-pw').value = '';
+      document.getElementById('login-pw').focus();
+    }
+  };
+
+  window.togglePw = function(){
+    var inp = document.getElementById('login-pw');
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+  };
+})();
+</script>
+<!-- ════════════════════════════════════════════════════════════ -->
+
+  
 <div class="app">
 
   <!-- ── SIDEBAR ── -->
