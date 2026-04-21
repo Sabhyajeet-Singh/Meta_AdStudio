@@ -284,7 +284,7 @@ input[type=color] { position: absolute; inset: 0; opacity: 0; cursor: pointer; w
 
 <div id="login-gate" style="
   position:fixed;inset:0;z-index:9999;
-  background:#9990B0;
+  background:#201c3b;
   display:flex;align-items:center;justify-content:center;
   font-family:'DM Sans',sans-serif;
 ">
@@ -294,16 +294,20 @@ input[type=color] { position: absolute; inset: 0; opacity: 0; cursor: pointer; w
     box-shadow:0 8px 32px rgba(0,0,0,0.08);
     text-align:center;
   ">
-    <div style="width:44px;height:44px;background:#5B4DCC;border-radius:10px;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;">
-      <span style="display:flex; align-items:center; gap:5px; font-weight:600; font-size:16px;">
-  AdStudio
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="#5B4DCC">
-    <path d="M12 2 L13.5 10.5 L22 12 L13.5 13.5 L12 22 L10.5 13.5 L2 12 L10.5 10.5 Z"/>
-  </svg>
-</span>
-    </div>
-    <div style="font-size:17px;font-weight:600;color:#5B4DCC;letter-spacing:-.3px;margin-bottom:4px;">WA Template Studio</div>
-    <div style="font-size:12px;color:#6b6b62;margin-bottom:1.8rem;">Internal tool · Spinny CRM Team</div>
+    <svg width="160" height="60" viewBox="0 0 160 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Purple rounded square background -->
+  <rect x="20" y="8" width="44" height="44" rx="12" fill="#5B4DCC"/>
+  
+  <!-- "Ad" text (outside, muted) -->
+  <text x="24" y="36" font-family="sans-serif" font-size="15" font-weight="600" fill="#A09CC0">Ad</text>
+  
+  <!-- "Studio" text (on top of rect, white) -->
+  <text x="38" y="36" font-family="sans-serif" font-size="15" font-weight="600" fill="white">Studio</text>
+  
+  <!-- Sparkle ✦ -->
+  <path d="M118 18 L119.2 24 L125 25.5 L119.2 27 L118 33 L116.8 27 L111 25.5 L116.8 24 Z" fill="#5B4DCC"/>
+</svg>
+        <div style="font-size:12px;color:#6b6b62;margin-bottom:1.8rem;">Internal tool · Spinny CRM Team</div>
 
     <div style="position:relative;margin-bottom:10px;">
       <input
@@ -331,13 +335,13 @@ input[type=color] { position: absolute; inset: 0; opacity: 0; cursor: pointer; w
     "></div>
 
     <button onclick="checkLogin()" style="
-      width:100%;padding:11px;background:#25D366;color:#fff;
+      width:100%;padding:11px;background:#5B4DCC;color:#fff;
       border:none;border-radius:9px;font-size:14px;font-weight:600;
       cursor:pointer;font-family:'DM Sans',sans-serif;
       transition:background .15s;
     "
-    onmouseover="this.style.background='#128C7E'"
-    onmouseout="this.style.background='#25D366'"
+    onmouseover="this.style.background='#201c3b'"
+    onmouseout="this.style.background='#5B4DCC'"
     >Unlock →</button>
 
     <div style="font-size:11px;color:#6b6b62;margin-top:1.2rem;">
